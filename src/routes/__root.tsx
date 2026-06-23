@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "NOVA The Marine Tablet PRO — the best nautical tablet for sea professionals. Sub-metric GPS ±1.5 cm, 1,000 nit sunlight display, IP68, MIL-STD-810H. Pre-order now and save €400. Only 100 units.",
+          "NOVA The Marine Tablet PRO — the best nautical tablet for sea professionals. Sub-metric GPS ±1.5 cm, 1,000 nit sunlight display, IP68, MIL-STD-810H. Pre-order now and save 400€. Only 100 units.",
       },
       {
         name: "keywords",
@@ -94,12 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       /* ── Open Graph ── */
       {
         property: "og:title",
-        content: "NOVA The Marine Tablet PRO | Best Nautical Tablet — Pre-Order & Save €400",
+        content: "NOVA The Marine Tablet PRO | Best Nautical Tablet — Pre-Order & Save 400€",
       },
       {
         property: "og:description",
         content:
-          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 24h battery. Pre-order the best nautical tablet and save €400. Only first 100 units.",
+          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 24h battery. Pre-order the best nautical tablet and save 400€. Only first 100 units.",
       },
       { property: "og:type", content: "product" },
       { property: "og:url", content: "https://novamarinestablet.com/" },
@@ -114,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "NOVA Marine Tablet PRO | Best Nautical Tablet — Pre-Order & Save €400",
+        content: "NOVA Marine Tablet PRO | Best Nautical Tablet — Pre-Order & Save 400€",
       },
       {
         name: "twitter:description",
@@ -153,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "availability": "https://schema.org/LimitedAvailability",
                 "itemCondition": "https://schema.org/NewCondition",
                 "seller": { "@type": "Organization", "name": "NOVA Marine" },
-                "description": "Pre-order launch price. Includes €400 discount, free Super Charger and Ergonomic Handle. Only 100 units available.",
+                "description": "Pre-order launch price. Includes 400€ discount, free Super Charger and Ergonomic Handle. Only 100 units available.",
               },
               "aggregateRating": {
                 "@type": "AggregateRating",
@@ -217,7 +217,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   "name": "What does the nautical tablet pre-order offer include?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The pre-order launch bundle includes: NOVA The Marine Tablet PRO, Heavy-Duty Protective Case, Premium Charging Dock & Power Kit, Tempered Glass Screen Protector, 36-Month Extended Warranty, and NOVA Skippers Care+ lifetime support program. Price: €595 (RRP €995). Only 100 units available.",
+                    "text": "The pre-order launch bundle includes: NOVA The Marine Tablet PRO, Heavy-Duty Protective Case, Premium Charging Dock & Power Kit, Tempered Glass Screen Protector, 36-Month Extended Warranty, and NOVA Skippers Care+ lifetime support program. Price: 595€ (RRP 995€). Only 100 units available.",
                   },
                 },
                 {

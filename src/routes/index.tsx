@@ -136,7 +136,7 @@ function Index() {
 
                 <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                   <span className="text-sm text-white/55 line-through">{t.hero.rrp}</span>
-                  <span className="font-display text-2xl text-white md:text-3xl">€595</span>
+                  <span className="font-display text-2xl text-white md:text-3xl">595€</span>
                   <span className="rounded-full border border-white/20 px-3 py-0.5 text-[11px] tracking-widest uppercase text-white/55">
                     {t.hero.units}
                   </span>
@@ -343,7 +343,7 @@ function Index() {
 
               <div className="mt-8 flex items-baseline gap-5">
                 <span className="text-base line-through text-muted-foreground">{t.form.rrp}</span>
-                <span className="font-display text-5xl text-foreground">€595</span>
+                <span className="font-display text-5xl text-foreground">595€</span>
                 <span className="rounded-full border border-primary/40 px-3 py-0.5 text-[11px] tracking-widest uppercase text-primary">
                   {t.form.saveBadge}
                 </span>

@@ -15,10 +15,10 @@ export const translations = {
       h1a: "The True",
       h1b: "Nautical Tablet",
       description: "The world's first true nautical tablet. Built for the sea, trusted by professionals.",
-      rrp: "RRP €995",
+      rrp: "RRP 995€",
       units: "Only 100 units",
       ctaBtn: "Pre-Order Now",
-      ctaNote: "Save €400 & get Free Super Charger + Ergonomic Handle",
+      ctaNote: "Save 400€ & get Free Super Charger + Ergonomic Handle",
       badgePatent: "★ Registered Patent",
       badgeDesign: "Spanish Design",
     },
@@ -28,18 +28,18 @@ export const translations = {
       h2b: "designed to last.",
       bonusTitle: "Bonus Accessories",
       bonusFree: "FREE",
-      bonusSubtitle: "Super Charger + Ergonomic Handle · Valued at €120",
+      bonusSubtitle: "Super Charger + Ergonomic Handle · Valued at 120€",
       bonusDesc:
         "With your pre-order you receive the fast-charging Super Charger and the nautical Ergonomic Handle completely free. Both included for the first 100 units only.",
       bonusIncluded: "Included free",
-      bonusValue: "€120",
+      bonusValue: "120€",
       bonusValueLabel: "value",
       microcopy:
         "Navigate confidently with NOVA's ultra-precise GPS and marine-grade hardware.",
       microcopyBold:
-        "Pre-order now and get €400 Discount & a Super Charger + Ergonomic Handle free!",
+        "Pre-order now and get 400€ Discount & a Super Charger + Ergonomic Handle free!",
       microcopyAccent: "Only first 100 units.",
-      cta: "Pre-order for €595 →",
+      cta: "Pre-order for 595€ →",
     },
     benefitCards: [
       {
@@ -95,7 +95,7 @@ export const translations = {
         {
           name: "Manuel A.",
           role: "Recreational Sailor",
-          text: "I've gone through countless screens from drops and water damage. This tablet works for everything: navigating, working, home and kids. And best of all, it costs far less than a nautical plotter — those start at €1,500 for a similar display.",
+          text: "I've gone through countless screens from drops and water damage. This tablet works for everything: navigating, working, home and kids. And best of all, it costs far less than a nautical plotter — those start at 1,500€ for a similar display.",
         },
         {
           name: "Captain J. Fuentes",
@@ -127,11 +127,11 @@ export const translations = {
     form: {
       eyebrow: "— Exclusive Offer · Only 100 Units",
       h2a: "Reserve today and save",
-      h2b: "€400 directly.",
+      h2b: "400€ directly.",
       description:
         "Be among the first 100 to secure your unit at the exclusive launch price.",
-      rrp: "RRP €995",
-      saveBadge: "Save €400",
+      rrp: "RRP 995€",
+      saveBadge: "Save 400€",
       gifts: [
         "Fast-charge Super Charger included",
         "Nautical Ergonomic Handle included",
@@ -157,11 +157,11 @@ export const translations = {
         { value: "entusiasta", label: "Nautical technology enthusiast" },
         { value: "otro", label: "Other" },
       ],
-      submit: "Reserve for €595 →",
+      submit: "Reserve for 595€ →",
       submitting: "Sending…",
       successTitle: "Pre-order received!",
       successDesc:
-        "We will contact you within 24 hours to confirm your unit at the exclusive price of €595.",
+        "We will contact you within 24 hours to confirm your unit at the exclusive price of 595€.",
       errorMsg: "Could not submit your pre-order. Please try again.",
       required:
         "* Required fields. No commitment — we will contact you within 24 hours.",
@@ -175,10 +175,10 @@ export const translations = {
       thStandard: "Standard Tablet",
       microcopy:
         "NOVA PRO outperforms any standard nautical tablet in screen readability, battery life, GPS precision and connectivity. Pre-order now and get",
-      microcopyBold: "€400 off",
+      microcopyBold: "400€ off",
       microcopyMid: "+ exclusive Super Charger + Ergonomic Handle.",
       microcopyAccent: "First 100 units only.",
-      cta: "Pre-order for €595 →",
+      cta: "Pre-order for 595€ →",
       rows: [
         {
           icon: "🌞",
@@ -255,7 +255,7 @@ export const translations = {
       warranty: "Warranty",
       followUs: "Follow Us",
       warrantyItems: ["3-year warranty", "Official Technical Support", "CE & FCC certified"],
-      ctaText: "Pre-order now — Save €400 + Free Super Charger + Ergonomic Handle",
+      ctaText: "Pre-order now — Save 400€ + Free Super Charger + Ergonomic Handle",
       ctaUnits: "First 100 units only",
       ctaBtn: "Pre-order →",
       copyright:
@@ -287,10 +287,10 @@ export const translations = {
       h1b: "Tableta Náutica",
       description:
         "La primera tableta verdaderamente náutica del mundo. Construida para el mar, confiada por profesionales.",
-      rrp: "PVP €995",
+      rrp: "PVP 995€",
       units: "Solo 100 unidades",
       ctaBtn: "Reservar Ahora",
-      ctaNote: "Ahorra €400 y llévate Supercargador + Asa Ergonómica GRATIS",
+      ctaNote: "Ahorra 400€ y llévate Supercargador + Asa Ergonómica GRATIS",
       badgePatent: "★ Patente Registrada",
       badgeDesign: "Diseño Español",
     },
@@ -300,18 +300,18 @@ export const translations = {
       h2b: "diseñada para durar.",
       bonusTitle: "Accesorios Bonus",
       bonusFree: "GRATIS",
-      bonusSubtitle: "Supercargador + Asa Ergonómica · Valorados en €120",
+      bonusSubtitle: "Supercargador + Asa Ergonómica · Valorados en 120€",
       bonusDesc:
         "Con tu reserva recibes el Supercargador de carga rápida y el Asa Ergonómica náutica completamente gratis. Ambos incluidos solo para las primeras 100 unidades.",
       bonusIncluded: "Incluido gratis",
-      bonusValue: "€120",
+      bonusValue: "120€",
       bonusValueLabel: "valor",
       microcopy:
         "Navega con confianza gracias al GPS ultrapreciso y el hardware de grado marino de NOVA.",
       microcopyBold:
-        "¡Reserva ahora y obtén €400 de descuento + Supercargador + Asa Ergonómica gratis!",
+        "¡Reserva ahora y obtén 400€ de descuento + Supercargador + Asa Ergonómica gratis!",
       microcopyAccent: "Solo primeras 100 unidades.",
-      cta: "Reservar por €595 →",
+      cta: "Reservar por 595€ →",
     },
     benefitCards: [
       {
@@ -367,7 +367,7 @@ export const translations = {
         {
           name: "Manuel A.",
           role: "Navegante de Recreo",
-          text: "He roto incontables pantallas por golpes y agua. Esta tableta sirve para todo: navegar, trabajar, casa y niños. Y lo mejor, cuesta mucho menos que un plotter náutico — esos parten de €1.500 por una pantalla similar.",
+          text: "He roto incontables pantallas por golpes y agua. Esta tableta sirve para todo: navegar, trabajar, casa y niños. Y lo mejor, cuesta mucho menos que un plotter náutico — esos parten de 1.500€ por una pantalla similar.",
         },
         {
           name: "Capitán J. Fuentes",
@@ -399,11 +399,11 @@ export const translations = {
     form: {
       eyebrow: "— Oferta Exclusiva · Solo 100 Unidades",
       h2a: "Reserva hoy y ahorra",
-      h2b: "€400 directamente.",
+      h2b: "400€ directamente.",
       description:
         "Sé de los primeros 100 en asegurar tu unidad al precio exclusivo de lanzamiento.",
-      rrp: "PVP €995",
-      saveBadge: "Ahorra €400",
+      rrp: "PVP 995€",
+      saveBadge: "Ahorra 400€",
       gifts: [
         "Supercargador de carga rápida incluido",
         "Asa Ergonómica náutica incluida",
@@ -429,11 +429,11 @@ export const translations = {
         { value: "entusiasta", label: "Entusiasta de tecnología náutica" },
         { value: "otro", label: "Otro" },
       ],
-      submit: "Reservar por €595 →",
+      submit: "Reservar por 595€ →",
       submitting: "Enviando…",
       successTitle: "¡Reserva recibida!",
       successDesc:
-        "Nos pondremos en contacto contigo en 24 horas para confirmar tu unidad al precio exclusivo de €595.",
+        "Nos pondremos en contacto contigo en 24 horas para confirmar tu unidad al precio exclusivo de 595€.",
       errorMsg: "No se pudo enviar tu reserva. Por favor, inténtalo de nuevo.",
       required:
         "* Campos obligatorios. Sin compromiso — te contactaremos en 24 horas.",
@@ -447,10 +447,10 @@ export const translations = {
       thStandard: "Tableta Estándar",
       microcopy:
         "La NOVA PRO supera a cualquier tableta náutica estándar en legibilidad de pantalla, autonomía, precisión GPS y conectividad. Reserva ahora y obtén",
-      microcopyBold: "€400 de descuento",
+      microcopyBold: "400€ de descuento",
       microcopyMid: "+ Supercargador exclusivo + Asa Ergonómica.",
       microcopyAccent: "Solo primeras 100 unidades.",
-      cta: "Reservar por €595 →",
+      cta: "Reservar por 595€ →",
       rows: [
         {
           icon: "🌞",
@@ -532,7 +532,7 @@ export const translations = {
         "Certificado CE y FCC",
       ],
       ctaText:
-        "Reserva ahora — Ahorra €400 + Supercargador + Asa Ergonómica GRATIS",
+        "Reserva ahora — Ahorra 400€ + Supercargador + Asa Ergonómica GRATIS",
       ctaUnits: "Solo primeras 100 unidades",
       ctaBtn: "Reservar →",
       copyright:
