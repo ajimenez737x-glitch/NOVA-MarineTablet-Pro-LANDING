@@ -468,12 +468,34 @@ function Index() {
                     </div>
                   </div>
 
+                  <div className="mt-6">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        required
+                        className="mt-0.5 h-4 w-4 shrink-0 accent-primary cursor-pointer"
+                      />
+                      <span className="text-xs leading-relaxed text-muted-foreground">
+                        {t.form.consentLabel}{" "}
+                        <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-foreground transition-colors">
+                          {t.form.consentPrivacy}
+                        </a>{" "}
+                        {t.form.consentAnd}{" "}
+                        <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-foreground transition-colors">
+                          {t.form.consentTerms}
+                        </a>
+                        . <span aria-hidden="true" className="text-red-400">*</span>
+                      </span>
+                    </label>
+                  </div>
+
                   <button
                     type="submit"
                     disabled={formLoading}
                     aria-label="Submit pre-order for 595 euros"
                     aria-busy={formLoading}
-                    className="cta-btn mt-8 w-full rounded-full bg-white px-8 py-4 text-sm tracking-widest text-[#0b1f3b] uppercase transition-all duration-300 hover:bg-primary hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 disabled:scale-100"
+                    className="cta-btn mt-6 w-full rounded-full bg-white px-8 py-4 text-sm tracking-widest text-[#0b1f3b] uppercase transition-all duration-300 hover:bg-primary hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 disabled:scale-100"
                   >
                     {formLoading ? t.form.submitting : t.form.submit}
                   </button>
@@ -690,10 +712,10 @@ function Index() {
               &copy; {new Date().getFullYear()} {t.footer.copyright}
             </span>
             <div className="flex flex-wrap gap-x-4 gap-y-2 md:gap-6">
-              <a href="#" className="link-underline">{t.footer.legal}</a>
-              <a href="#" className="link-underline">{t.footer.privacy}</a>
-              <a href="#" className="link-underline">{t.footer.terms}</a>
-              <a href="#" className="link-underline">{t.footer.cookies}</a>
+              <a href="/legal" className="link-underline">{t.footer.legal}</a>
+              <a href="/privacy" className="link-underline">{t.footer.privacy}</a>
+              <a href="/terms" className="link-underline">{t.footer.terms}</a>
+              <a href="/cookies" className="link-underline">{t.footer.cookies}</a>
             </div>
           </div>
         </div>
