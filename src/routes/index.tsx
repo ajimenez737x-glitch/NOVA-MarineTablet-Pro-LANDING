@@ -624,6 +624,11 @@ function Index() {
                     info@novamarinestablet.com
                   </a>
                 </li>
+                <li>
+                  <a href="mailto:hola@novamarintablets.tech" className="link-underline">
+                    hola@novamarintablets.tech
+                  </a>
+                </li>
                 <li className="text-muted-foreground">Barcelona · Valencia · Vigo, Spain</li>
               </ul>
             </div>
