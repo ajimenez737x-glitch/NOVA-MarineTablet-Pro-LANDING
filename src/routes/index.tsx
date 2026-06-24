@@ -625,8 +625,11 @@ function Index() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:hola@novamarintablets.tech" className="link-underline">
-                    hola@novamarintablets.tech
+                  <a
+                    href={lang === "en" ? "mailto:hello@novamarintablets.tech" : "mailto:hola@novamarintablets.tech"}
+                    className="link-underline"
+                  >
+                    {lang === "en" ? "hello@novamarintablets.tech" : "hola@novamarintablets.tech"}
                   </a>
                 </li>
                 <li className="text-muted-foreground">Barcelona · Valencia · Vigo, Spain</li>
