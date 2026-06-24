@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { CookieBanner } from "@/components/CookieBanner";
+import { useLang } from "@/hooks/useLang";
 
 function NotFoundComponent() {
   return (
@@ -282,8 +283,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const lang = useLang();
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         <HeadContent />
       </head>
