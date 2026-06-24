@@ -249,6 +249,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         }),
       },
     ],
+    scripts: [
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-X5BBJSE4FG",
+        async: true,
+      },
+      {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-X5BBJSE4FG');`,
+      },
+    ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: "https://novamarinestablet.com/" },

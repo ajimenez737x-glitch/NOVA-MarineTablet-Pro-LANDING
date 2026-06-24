@@ -167,6 +167,10 @@ export const translations = {
       successDesc:
         "We will contact you within 24 hours to confirm your unit at the exclusive price of 595€.",
       errorMsg: "Could not submit your pre-order. Please try again.",
+      errName: "Please enter your full name (min. 2 characters).",
+      errEmail: "Please enter a valid email address.",
+      errPhone: "Please enter a valid phone number.",
+      errConsent: "You must accept the privacy policy to continue.",
       required:
         "* Required fields. No commitment — we will contact you within 24 hours.",
     },
@@ -443,6 +447,10 @@ export const translations = {
       successDesc:
         "Nos pondremos en contacto contigo en 24 horas para confirmar tu unidad al precio exclusivo de 595€.",
       errorMsg: "No se pudo enviar tu reserva. Por favor, inténtalo de nuevo.",
+      errName: "Por favor, introduce tu nombre completo (mín. 2 caracteres).",
+      errEmail: "Por favor, introduce un email válido.",
+      errPhone: "Por favor, introduce un número de teléfono válido.",
+      errConsent: "Debes aceptar la política de privacidad para continuar.",
       required:
         "* Campos obligatorios. Sin compromiso — te contactaremos en 24 horas.",
     },

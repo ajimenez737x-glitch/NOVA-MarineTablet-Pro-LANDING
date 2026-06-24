@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useCallback, useEffect, useRef, type FormEvent } from "react";
+import { useState, useCallback, useEffect, useRef, type FormEvent, type ReactNode } from "react";
 import { Nav, CompassIcon } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { FAQ } from "@/components/FAQ";
@@ -12,6 +12,54 @@ import { translations } from "@/i18n/translations";
 export const Route = createFileRoute("/")({
   component: Index,
 });
+
+const CERT_BADGES: { alt: string; svg: ReactNode }[] = [
+  {
+    alt: "IP68 Waterproof Certified",
+    svg: (
+      <svg viewBox="0 0 58 26" fill="none" className="h-5 w-auto" aria-hidden>
+        <rect x="1" y="1" width="56" height="24" rx="3.5" stroke="currentColor" strokeWidth="1.5" />
+        <text x="29" y="18" textAnchor="middle" fill="currentColor" fontSize="12" fontWeight="800" fontFamily="Arial,sans-serif" letterSpacing="1.5">IP68</text>
+      </svg>
+    ),
+  },
+  {
+    alt: "MIL-STD-810H Military Standard",
+    svg: (
+      <svg viewBox="0 0 52 54" fill="none" className="h-7 w-auto" aria-hidden>
+        <path d="M26 2L49 11.5V30C49 43 37.5 51 26 53C14.5 51 3 43 3 30V11.5L26 2Z" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.08" />
+        <text x="26" y="22" textAnchor="middle" fill="currentColor" fontSize="7" fontWeight="700" fontFamily="Arial,sans-serif" letterSpacing="0.5">MIL·STD</text>
+        <text x="26" y="35" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="800" fontFamily="Arial,sans-serif" letterSpacing="0.5">810H</text>
+      </svg>
+    ),
+  },
+  {
+    alt: "CE European Conformity",
+    svg: (
+      <svg viewBox="-4 -4 64 52" fill="none" className="h-6 w-auto" aria-hidden>
+        {/* C — thick arc open on right, ±60° gap */}
+        <path d="M22 9.88 A14 14 0 1 0 22 34.12" stroke="currentColor" strokeWidth="7" strokeLinecap="butt" fill="none" />
+        {/* E — same arc */}
+        <path d="M50 9.88 A14 14 0 1 0 50 34.12" stroke="currentColor" strokeWidth="7" strokeLinecap="butt" fill="none" />
+        {/* E — horizontal bar through center */}
+        <line x1="29" y1="22" x2="50" y2="22" stroke="currentColor" strokeWidth="7" strokeLinecap="butt" />
+      </svg>
+    ),
+  },
+  {
+    alt: "FCC Certified",
+    svg: (
+      <svg viewBox="0 0 58 32" fill="none" className="h-6 w-auto" aria-hidden>
+        {/* F */}
+        <text x="3" y="24" fill="currentColor" fontSize="22" fontWeight="900" fontFamily="Arial,sans-serif">F</text>
+        {/* Large C arc enclosing the mark */}
+        <path d="M44 5 A13 13 0 1 0 44 27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
+        {/* Inner C */}
+        <path d="M44 10 A8 8 0 1 0 44 22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      </svg>
+    ),
+  },
+];
 
 // Icons for benefit cards — same for both languages, position-matched to benefitCards array
 const BENEFIT_ICONS = [
@@ -30,6 +78,7 @@ function Index() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const marqueeContainerRef = useRef<HTMLDivElement>(null);
   const lang = useLang();
@@ -56,17 +105,54 @@ function Index() {
     setScrollProgress(progress);
   }, []);
 
+  function validateField(name: string, value: string, checked?: boolean): string {
+    if (name === "nombre") return value.trim().length >= 2 ? "" : t.form.errName;
+    if (name === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? "" : t.form.errEmail;
+    if (name === "telefono") return /^[0-9+\s\-]{7,15}$/.test(value.trim()) ? "" : t.form.errPhone;
+    if (name === "consent") return checked ? "" : t.form.errConsent;
+    return "";
+  }
+
+  function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value, type } = e.target;
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    const err = validateField(name, value, checked);
+    setFieldErrors((prev) => ({ ...prev, [name]: err }));
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+    const { name, value, type } = e.target;
+    if (!fieldErrors[name]) return;
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    const err = validateField(name, value, checked);
+    setFieldErrors((prev) => ({ ...prev, [name]: err }));
+  }
+
   async function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const nombre = fd.get("nombre") as string;
+    const email = fd.get("email") as string;
+    const telefono = fd.get("telefono") as string;
+    const consent = (e.currentTarget.elements.namedItem("consent") as HTMLInputElement)?.checked;
+
+    const errors = {
+      nombre: validateField("nombre", nombre),
+      email: validateField("email", email),
+      telefono: validateField("telefono", telefono),
+      consent: validateField("consent", "", consent),
+    };
+    setFieldErrors(errors);
+    if (Object.values(errors).some(Boolean)) return;
+
     setFormLoading(true);
     setFormError(null);
     try {
-      const fd = new FormData(e.currentTarget);
       await saveLead({
         data: {
-          nombre: fd.get("nombre") as string,
-          email: fd.get("email") as string,
-          telefono: fd.get("telefono") as string,
+          nombre,
+          email,
+          telefono,
           empresa: (fd.get("empresa") as string) || "",
           interes: (fd.get("interes") as string) || "",
         },
@@ -140,6 +226,18 @@ function Index() {
                   <span className="rounded-full border border-white/20 px-3 py-0.5 text-[11px] tracking-widest uppercase text-white/55">
                     {t.hero.units}
                   </span>
+                </div>
+
+                <div className="mt-5 flex flex-wrap items-center gap-2" aria-label="Certifications">
+                  {CERT_BADGES.map((badge) => (
+                    <div
+                      key={badge.alt}
+                      title={badge.alt}
+                      className="flex items-center justify-center rounded-md bg-white/10 border border-white/15 px-2.5 py-1.5 backdrop-blur-sm text-white/75"
+                    >
+                      {badge.svg}
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -384,7 +482,7 @@ function Index() {
                   onSubmit={handleLeadSubmit}
                   aria-label="NOVA Marine Tablet PRO pre-order form"
                   className="rounded-2xl border border-border bg-card/40 p-5 md:p-10"
-                  noValidate={false}
+                  noValidate
                 >
                   <div className="grid gap-5 sm:grid-cols-2">
 
@@ -396,12 +494,17 @@ function Index() {
                         id="lead-nombre"
                         name="nombre"
                         type="text"
-                        required
-                        minLength={2}
                         autoComplete="name"
                         placeholder={t.form.placeholderName}
-                        className="lead-input-dark"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        aria-describedby={fieldErrors.nombre ? "err-nombre" : undefined}
+                        aria-invalid={!!fieldErrors.nombre}
+                        className={`lead-input-dark ${fieldErrors.nombre ? "border-red-500/60 focus:border-red-500" : ""}`}
                       />
+                      {fieldErrors.nombre && (
+                        <p id="err-nombre" role="alert" className="mt-1.5 text-[11px] text-red-400">{fieldErrors.nombre}</p>
+                      )}
                     </div>
 
                     <div>
@@ -412,11 +515,17 @@ function Index() {
                         id="lead-email"
                         name="email"
                         type="email"
-                        required
                         autoComplete="email"
                         placeholder={t.form.placeholderEmail}
-                        className="lead-input-dark"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        aria-describedby={fieldErrors.email ? "err-email" : undefined}
+                        aria-invalid={!!fieldErrors.email}
+                        className={`lead-input-dark ${fieldErrors.email ? "border-red-500/60 focus:border-red-500" : ""}`}
                       />
+                      {fieldErrors.email && (
+                        <p id="err-email" role="alert" className="mt-1.5 text-[11px] text-red-400">{fieldErrors.email}</p>
+                      )}
                     </div>
 
                     <div>
@@ -427,12 +536,17 @@ function Index() {
                         id="lead-telefono"
                         name="telefono"
                         type="tel"
-                        required
-                        pattern="[0-9+\s\-]{7,15}"
                         autoComplete="tel"
                         placeholder={t.form.placeholderPhone}
-                        className="lead-input-dark"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        aria-describedby={fieldErrors.telefono ? "err-telefono" : undefined}
+                        aria-invalid={!!fieldErrors.telefono}
+                        className={`lead-input-dark ${fieldErrors.telefono ? "border-red-500/60 focus:border-red-500" : ""}`}
                       />
+                      {fieldErrors.telefono && (
+                        <p id="err-telefono" role="alert" className="mt-1.5 text-[11px] text-red-400">{fieldErrors.telefono}</p>
+                      )}
                     </div>
 
                     <div className="sm:col-span-2">
@@ -473,7 +587,10 @@ function Index() {
                       <input
                         type="checkbox"
                         name="consent"
-                        required
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        aria-describedby={fieldErrors.consent ? "err-consent" : undefined}
+                        aria-invalid={!!fieldErrors.consent}
                         className="mt-0.5 h-4 w-4 shrink-0 accent-primary cursor-pointer"
                       />
                       <span className="text-xs leading-relaxed text-muted-foreground">
@@ -488,6 +605,9 @@ function Index() {
                         . <span aria-hidden="true" className="text-red-400">*</span>
                       </span>
                     </label>
+                    {fieldErrors.consent && (
+                      <p id="err-consent" role="alert" className="mt-1.5 text-[11px] text-red-400">{fieldErrors.consent}</p>
+                    )}
                   </div>
 
                   <button
