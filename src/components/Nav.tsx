@@ -170,13 +170,13 @@ export function Nav() {
           <div className="mt-auto space-y-4">
             <div className="hairline bg-background/20" />
             <a
-              href="tel:+34123456789"
+              href="tel:+34688631200"
               className="block text-sm tracking-widest uppercase opacity-80"
             >
-              +34 123 456 789
+              +34 688 63 12 00
             </a>
             <a
-              href="https://wa.me/34123456789"
+              href="https://wa.me/34688631200"
               className="inline-flex w-full items-center justify-center rounded-full bg-background px-6 py-4 text-sm font-medium tracking-wider text-foreground uppercase"
             >
               WhatsApp

@@ -737,12 +737,7 @@ function Index() {
               <p className="eyebrow text-primary">{t.footer.contact}</p>
               <ul className="mt-5 space-y-3 text-sm">
                 <li>
-                  <a href="tel:+34123456789" className="link-underline">+34 123 456 789</a>
-                </li>
-                <li>
-                  <a href="mailto:info@novamarinestablet.com" className="link-underline">
-                    info@novamarinestablet.com
-                  </a>
+                  <a href="tel:+34688631200" className="link-underline">+34 688 63 12 00</a>
                 </li>
                 <li>
                   <a
@@ -752,7 +747,6 @@ function Index() {
                     {lang === "en" ? "hello@novamarintablets.tech" : "hola@novamarintablets.tech"}
                   </a>
                 </li>
-                <li className="text-muted-foreground">Barcelona · Valencia · Vigo, Spain</li>
               </ul>
             </div>
 
