@@ -14,6 +14,14 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+declare global {
+  function gtag(...args: unknown[]): void;
+}
+
+function trackEvent(event: string, params?: Record<string, string>) {
+  try { gtag("event", event, params); } catch { /* gtag not ready */ }
+}
+
 const CERT_BADGES: { alt: string; svg: ReactNode }[] = [
   {
     alt: "IP68 Waterproof Certified",
@@ -158,6 +166,7 @@ function Index() {
           interes: (fd.get("interes") as string) || "",
         },
       });
+      trackEvent("form_submit", { form_type: "pre_order", lang });
       setFormSubmitted(true);
     } catch {
       setFormError(t.form.errorMsg);
@@ -243,17 +252,29 @@ function Index() {
               </div>
 
               <div
-                className="animate-rise flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-5"
+                className="animate-rise flex flex-col gap-3"
                 style={{ animationDelay: "0.7s" }}
               >
-                <a
-                  href="#contacto"
-                  aria-label="Pre-order NOVA Marine Tablet PRO — save 400 euros and get free accessories"
-                  className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold tracking-wide text-[#0b1f3b] transition-all duration-300 hover:bg-[#b8bec8] hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  {t.hero.ctaBtn}
-                </a>
-                <p className="text-sm leading-snug text-white/70 max-w-[220px] sm:max-w-xs">
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href="#contacto"
+                    aria-label="Pre-order NOVA Marine Tablet PRO — save 400 euros and get free accessories"
+                    onClick={() => trackEvent("cta_click", { cta_location: "hero" })}
+                    className="shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold tracking-wide text-[#0b1f3b] transition-all duration-300 hover:bg-[#b8bec8] hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    {t.hero.ctaBtn}
+                  </a>
+                  <a
+                    href="/brochure.pdf"
+                    download="NOVA-Marine-Tablet-PRO-Brochure.pdf"
+                    onClick={() => trackEvent("file_download", { file_name: "nova-brochure.pdf" })}
+                    className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-4 text-sm font-medium text-white/90 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white active:scale-[0.98]"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    {lang === "es" ? "Descargar Dossier" : "Download Brochure"}
+                  </a>
+                </div>
+                <p className="text-sm leading-snug text-white/70 max-w-xs">
                   {t.hero.ctaNote}
                 </p>
               </div>
@@ -378,6 +399,7 @@ function Index() {
             <a
               href="#contacto"
               aria-label="Pre-order NOVA Marine Tablet PRO for 595 euros"
+              onClick={() => trackEvent("cta_click", { cta_location: "features" })}
               className="cta-btn mt-8 inline-flex items-center gap-3 rounded-full bg-white px-10 py-4 text-sm text-[#0b1f3b] uppercase tracking-widest transition-all duration-300 hover:bg-[#b8bec8] hover:scale-[1.02] hover:shadow-xl"
             >
               {t.features.cta}
@@ -551,23 +573,6 @@ function Index() {
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label htmlFor="lead-interes" className="mb-1.5 block text-[11px] font-semibold tracking-widest uppercase text-muted-foreground">
-                        {t.form.labelUse}
-                      </label>
-                      <select
-                        id="lead-interes"
-                        name="interes"
-                        className="lead-input-dark appearance-none"
-                        defaultValue=""
-                      >
-                        <option value="" disabled>{t.form.selectDefault}</option>
-                        {t.form.selectOptions.map((opt) => (
-                          <option key={opt.value} value={opt.value}>{opt.label}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="sm:col-span-2">
                       <label htmlFor="lead-empresa" className="mb-1.5 block text-[11px] font-semibold tracking-widest uppercase text-muted-foreground">
                         {t.form.labelCompany}{" "}
                         <span className="normal-case tracking-normal font-normal text-[10px]">{t.form.companyOptional}</span>
@@ -652,7 +657,8 @@ function Index() {
             </h2>
           </Reveal>
 
-          <p className="mt-14 mb-2 text-right text-[11px] tracking-widest uppercase text-muted-foreground md:hidden">
+          <div className="mt-14">
+          <p className="mb-2 text-right text-[11px] tracking-widest uppercase text-muted-foreground md:hidden">
             ← desliza →
           </p>
           <Reveal delay={1} className="overflow-x-auto rounded-xl border border-border shadow-2xl">
@@ -694,11 +700,13 @@ function Index() {
             <a
               href="#contacto"
               aria-label="Pre-order NOVA Marine Tablet PRO for 595 euros"
+              onClick={() => trackEvent("cta_click", { cta_location: "specs" })}
               className="cta-btn inline-flex items-center gap-3 rounded-full bg-white px-10 py-4 text-sm text-[#0b1f3b] uppercase tracking-widest transition-all duration-300 hover:bg-[#b8bec8] hover:scale-[1.02] hover:shadow-xl"
             >
               {t.specs.cta}
             </a>
           </Reveal>
+          </div>
         </div>
       </section>
 
@@ -721,9 +729,9 @@ function Index() {
       </section>
 
       {/* ─────────── FOOTER ─────────── */}
-      <footer className="bg-background pt-20 pb-10">
+      <footer className="bg-background pt-10 pb-6">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="grid gap-12 border-b border-border pb-14 md:grid-cols-12">
+          <div className="grid gap-8 border-b border-border pb-8 md:grid-cols-12">
             <div className="md:col-span-5">
               <a href="#top" className="flex items-center gap-3">
                 <img
@@ -823,7 +831,7 @@ function Index() {
             </div>
           </div>
 
-          <div className="my-10 flex flex-col items-center gap-4 rounded-xl border border-border bg-secondary/60 px-6 py-8 text-center md:flex-row md:justify-between md:text-left">
+          <div className="my-6 flex flex-col items-center gap-4 rounded-xl border border-border bg-secondary/60 px-6 py-5 text-center md:flex-row md:justify-between md:text-left">
             <div>
               <p className="font-display text-xl text-foreground md:text-2xl">
                 {t.footer.ctaText}
@@ -833,13 +841,14 @@ function Index() {
             <a
               href="#contacto"
               aria-label="Pre-order NOVA Marine Tablet PRO for 595 euros"
+              onClick={() => trackEvent("cta_click", { cta_location: "footer" })}
               className="cta-btn shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-xs text-[#0b1f3b] uppercase tracking-widest transition-all duration-300 hover:bg-[#b8bec8] hover:scale-[1.02]"
             >
               {t.footer.ctaBtn}
             </a>
           </div>
 
-          <div className="flex flex-col items-start justify-between gap-4 pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
+          <div className="flex flex-col items-start justify-between gap-4 pt-5 text-xs text-muted-foreground md:flex-row md:items-center">
             <span>
               &copy; {new Date().getFullYear()} {t.footer.copyright}
             </span>
