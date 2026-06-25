@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useCallback, useEffect, useRef, type FormEvent, type ReactNode } from "react";
-import { Nav, CompassIcon } from "@/components/Nav";
+import { Nav } from "@/components/Nav";
+import logoCompass from "@/assets/logo_compass.png";
 import { Reveal } from "@/components/Reveal";
 import { FAQ } from "@/components/FAQ";
 import { HeroCanvas } from "@/components/HeroCanvas";
@@ -724,10 +725,19 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <div className="grid gap-12 border-b border-border pb-14 md:grid-cols-12">
             <div className="md:col-span-5">
-              <div className="flex items-center gap-3 font-display text-3xl tracking-tight text-foreground">
-                <CompassIcon className="h-9 w-9 text-primary animate-pulse" />
-                NOVA <span style={{ color: "var(--sand)" }}>Marine</span>
-              </div>
+              <a href="#top" className="flex items-center gap-3">
+                <img
+                  src={logoCompass}
+                  alt="NOVA The Marine Tablet PRO logo"
+                  className="h-10 w-auto object-contain"
+                />
+                <span className="font-display text-xl tracking-tight text-foreground">
+                  NOVA <span style={{ color: "var(--sand)" }}>Marine</span>
+                  <span className="ml-1.5 hidden text-[10px] tracking-[0.24em] uppercase opacity-70 lg:inline">
+                    Tablet Pro
+                  </span>
+                </span>
+              </a>
               <p className="mt-4 max-w-xs text-sm text-muted-foreground">
                 {t.footer.description}
               </p>
