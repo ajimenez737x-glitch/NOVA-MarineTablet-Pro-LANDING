@@ -260,6 +260,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "canonical", href: "https://novamarinestablet.com/" },
       { rel: "preload", href: "/frames/23456_000.jpg", as: "image" },
