@@ -24,11 +24,11 @@ export const saveLead = createServerFn({ method: "POST" })
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fields: [
-            { name: "firstname", value: data.nombre },
-            { name: "email", value: data.email },
-            { name: "phone", value: data.telefono },
-            { name: "company", value: data.empresa },
-            { name: "interest", value: data.interes },
+            { objectTypeId: "0-1", name: "firstname", value: data.nombre },
+            { objectTypeId: "0-1", name: "email", value: data.email },
+            { objectTypeId: "0-1", name: "phone", value: data.telefono },
+            { objectTypeId: "0-2", name: "name", value: data.empresa },
+            { objectTypeId: "0-1", name: "interest", value: data.interes },
           ],
         }),
       }
