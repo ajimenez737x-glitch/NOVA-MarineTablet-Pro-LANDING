@@ -101,13 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 24h battery. Pre-order the best nautical tablet and save 400€. Only first 100 units.",
+          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 15-16h battery. Pre-order the best nautical tablet and save 400€. Only first 100 units.",
       },
       { property: "og:type", content: "product" },
-      { property: "og:url", content: "https://novamarinestablet.com/" },
+      { property: "og:url", content: "https://novamarintablets.tech/" },
       { property: "og:site_name", content: "NOVA Marine" },
       { property: "og:locale", content: "en_GB" },
-      { property: "og:image", content: "https://novamarinestablet.com/og-image.jpg" },
+      { property: "og:image", content: "https://novamarintablets.tech/og-image.jpg" },
       { property: "og:image:alt", content: "NOVA The Marine Tablet PRO — nautical tablet in sunlight on a yacht deck" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -123,7 +123,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Sub-metric GPS, 1,000 nit display, IP68 & MIL-STD-810H. The best marine navigation device for sea professionals. Pre-order now — only 100 units.",
       },
-      { name: "twitter:image", content: "https://novamarinestablet.com/og-image.jpg" },
+      { name: "twitter:image", content: "https://novamarintablets.tech/og-image.jpg" },
       { name: "twitter:image:alt", content: "NOVA The Marine Tablet PRO nautical tablet" },
 
       /* ── Structured Data ── */
@@ -134,9 +134,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Product",
               "name": "NOVA The Marine Tablet PRO",
-              "description": "Professional nautical tablet with sub-metric RTK GNSS GPS ±1.5 cm, 1,000 nit sunlight-readable display, IP68 waterproofing, MIL-STD-810H military certification and 24-hour battery life. The best marine navigation device for sea professionals.",
+              "description": "Professional nautical tablet with sub-metric RTK GNSS GPS ±1.5 cm, 1,000 nit sunlight-readable display, IP68 waterproofing, MIL-STD-810H military certification and 15-16 hour battery life. The best marine navigation device for sea professionals.",
               "brand": { "@type": "Brand", "name": "NOVA Marine" },
-              "image": "https://novamarinestablet.com/og-image.jpg",
+              "image": "https://novamarintablets.tech/og-image.jpg",
               "sku": "NOVA-PRO-001",
               "category": "Marine Electronics > Nautical Tablets",
               "additionalProperty": [
@@ -144,7 +144,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 { "@type": "PropertyValue", "name": "Screen Brightness", "value": "1,000 nits" },
                 { "@type": "PropertyValue", "name": "Waterproof Rating", "value": "IP68" },
                 { "@type": "PropertyValue", "name": "Military Standard", "value": "MIL-STD-810H" },
-                { "@type": "PropertyValue", "name": "Battery Life", "value": "24 hours active navigation" },
+                { "@type": "PropertyValue", "name": "Battery Life", "value": "15-16 hours active navigation" },
                 { "@type": "PropertyValue", "name": "Operating System", "value": "Android 14 Marine Edition" },
               ],
               "offers": {
@@ -243,7 +243,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebSite",
               "name": "NOVA Marine",
-              "url": "https://novamarinestablet.com/",
+              "url": "https://novamarintablets.tech/",
               "description": "Official website of NOVA The Marine Tablet PRO — the best nautical tablet and marine navigation device for sea professionals.",
             },
           ],
@@ -263,7 +263,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: "https://novamarinestablet.com/" },
+      { rel: "canonical", href: "https://novamarintablets.tech/" },
       { rel: "preload", href: "/frames/23456_000.jpg", as: "image" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
