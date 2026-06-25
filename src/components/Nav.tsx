@@ -82,7 +82,7 @@ export function Nav() {
             <img
               src={logoCompass}
               alt="NOVA The Marine Tablet PRO — nautical tablet brand logo"
-              className="h-10 w-auto object-contain transition-transform duration-700 hover:rotate-6"
+              className="h-14 w-auto object-contain transition-transform duration-700 hover:rotate-6"
             />
             <span className={`font-display text-xl tracking-tight transition-colors duration-500 ${
               scrolled || open ? "text-foreground" : "text-white"

@@ -729,7 +729,7 @@ function Index() {
                 <img
                   src={logoCompass}
                   alt="NOVA The Marine Tablet PRO logo"
-                  className="h-10 w-auto object-contain"
+                  className="h-14 w-auto object-contain"
                 />
                 <span className="font-display text-xl tracking-tight text-foreground">
                   NOVA <span style={{ color: "var(--sand)" }}>Marine</span>
