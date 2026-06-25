@@ -586,6 +586,19 @@ function Index() {
                         className="lead-input-dark"
                       />
                     </div>
+
+                    <div className="sm:col-span-2">
+                      <label htmlFor="lead-interes" className="mb-1.5 block text-[11px] font-semibold tracking-widest uppercase text-muted-foreground">
+                        {t.form.labelUse}
+                      </label>
+                      <input
+                        id="lead-interes"
+                        name="interes"
+                        type="text"
+                        placeholder={t.form.placeholderInterest}
+                        className="lead-input-dark"
+                      />
+                    </div>
                   </div>
 
                   <div className="mt-6">
@@ -738,6 +751,8 @@ function Index() {
                   src={logoCompass}
                   alt="NOVA The Marine Tablet PRO logo"
                   className="h-14 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="font-display text-xl tracking-tight text-foreground">
                   NOVA <span style={{ color: "var(--sand)" }}>Marine</span>
