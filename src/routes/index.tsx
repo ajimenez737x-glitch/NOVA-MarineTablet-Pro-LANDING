@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useCallback, useEffect, useRef, type FormEvent, type ReactNode } from "react";
+import "flag-icons/css/flag-icons.min.css";
 import { Nav } from "@/components/Nav";
 import logoCompass from "@/assets/logo_compass.png";
 import { Reveal } from "@/components/Reveal";
@@ -82,12 +83,80 @@ const BENEFIT_ICONS = [
   <Cpu key="cpu" className="h-7 w-7 text-primary" />,
 ];
 
+const PREFIXES = [
+  { code: "+34",  iso: "es", label: "+34" },
+  { code: "+351", iso: "pt", label: "+351" },
+  { code: "+44",  iso: "gb", label: "+44" },
+  { code: "+33",  iso: "fr", label: "+33" },
+  { code: "+39",  iso: "it", label: "+39" },
+  { code: "+49",  iso: "de", label: "+49" },
+  { code: "+31",  iso: "nl", label: "+31" },
+  { code: "+30",  iso: "gr", label: "+30" },
+  { code: "+385", iso: "hr", label: "+385" },
+  { code: "+1",   iso: "us", label: "+1" },
+  { code: "+212", iso: "ma", label: "+212" },
+];
+
+function PrefixDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const selected = PREFIXES.find((p) => p.code === value) ?? PREFIXES[0];
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="flex h-full items-center gap-1.5 border-r border-[#1a3050] bg-[#0e2040] px-3 text-sm text-white/80 hover:bg-[#1a3050] transition-colors"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span className={`fi fi-${selected.iso} rounded-sm`} style={{ width: 20, height: 15, display: "inline-block" }} />
+        <span>{selected.label}</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" className={`opacity-50 transition-transform ${open ? "rotate-180" : ""}`}>
+          <path d="M1 3l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        </svg>
+      </button>
+      {open && (
+        <ul
+          role="listbox"
+          className="absolute left-0 top-full z-50 mt-1 max-h-56 w-36 overflow-y-auto rounded-lg border border-[#1a3050] bg-[#0e2040] py-1 shadow-xl"
+        >
+          {PREFIXES.map((p) => (
+            <li key={p.code}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={p.code === value}
+                onClick={() => { onChange(p.code); setOpen(false); }}
+                className={`flex w-full items-center gap-2 px-3 py-2 text-sm transition-colors hover:bg-[#1a3050] ${p.code === value ? "text-white" : "text-white/70"}`}
+              >
+                <span className={`fi fi-${p.iso} rounded-sm`} style={{ width: 20, height: 15, display: "inline-block" }} />
+                {p.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function Index() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [prefix, setPrefix] = useState("+34");
 
   const marqueeContainerRef = useRef<HTMLDivElement>(null);
   const lang = useLang();
@@ -117,7 +186,7 @@ function Index() {
   function validateField(name: string, value: string, checked?: boolean): string {
     if (name === "nombre") return value.trim().length >= 2 ? "" : t.form.errName;
     if (name === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? "" : t.form.errEmail;
-    if (name === "telefono") return /^[0-9+\s\-]{7,15}$/.test(value.trim()) ? "" : t.form.errPhone;
+    if (name === "telefono") return /^[0-9\s\-]{6,15}$/.test(value.trim()) ? "" : t.form.errPhone;
     if (name === "consent") return checked ? "" : t.form.errConsent;
     return "";
   }
@@ -142,13 +211,14 @@ function Index() {
     const fd = new FormData(e.currentTarget);
     const nombre = fd.get("nombre") as string;
     const email = fd.get("email") as string;
-    const telefono = fd.get("telefono") as string;
+    const telefonoRaw = fd.get("telefono") as string;
+    const telefono = `${prefix} ${telefonoRaw}`.trim();
     const consent = (e.currentTarget.elements.namedItem("consent") as HTMLInputElement)?.checked;
 
     const errors = {
       nombre: validateField("nombre", nombre),
       email: validateField("email", email),
-      telefono: validateField("telefono", telefono),
+      telefono: validateField("telefono", telefonoRaw),
       consent: validateField("consent", "", consent),
     };
     setFieldErrors(errors);
@@ -555,18 +625,21 @@ function Index() {
                       <label htmlFor="lead-telefono" className="mb-1.5 block text-[11px] font-semibold tracking-widest uppercase text-muted-foreground">
                         {t.form.labelPhone} <span aria-hidden="true" className="text-red-400">*</span>
                       </label>
-                      <input
-                        id="lead-telefono"
-                        name="telefono"
-                        type="tel"
-                        autoComplete="tel"
-                        placeholder={t.form.placeholderPhone}
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        aria-describedby={fieldErrors.telefono ? "err-telefono" : undefined}
-                        aria-invalid={!!fieldErrors.telefono}
-                        className={`lead-input-dark ${fieldErrors.telefono ? "border-red-500/60 focus:border-red-500" : ""}`}
-                      />
+                      <div className={`flex overflow-hidden rounded-lg border bg-[#0a1a2f] transition-colors ${fieldErrors.telefono ? "border-red-500/60" : "border-[#1a3050]"}`}>
+                        <PrefixDropdown value={prefix} onChange={setPrefix} />
+                        <input
+                          id="lead-telefono"
+                          name="telefono"
+                          type="tel"
+                          autoComplete="tel-national"
+                          placeholder="600 000 000"
+                          onBlur={handleBlur}
+                          onChange={handleChange}
+                          aria-describedby={fieldErrors.telefono ? "err-telefono" : undefined}
+                          aria-invalid={!!fieldErrors.telefono}
+                          className="flex-1 bg-transparent px-3 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none"
+                        />
+                      </div>
                       {fieldErrors.telefono && (
                         <p id="err-telefono" role="alert" className="mt-1.5 text-[11px] text-red-400">{fieldErrors.telefono}</p>
                       )}
