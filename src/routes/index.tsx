@@ -115,7 +115,7 @@ function PrefixDropdown({ value, onChange }: { value: string; onChange: (v: stri
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex h-full items-center gap-1.5 border-r border-[#1a3050] bg-[#0e2040] px-3 text-sm text-white/80 hover:bg-[#1a3050] transition-colors"
+        className="flex h-full items-center gap-1.5 rounded-l-lg border-r border-[#1a3050] bg-[#0e2040] px-3 text-sm text-white/80 hover:bg-[#1a3050] transition-colors"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -625,7 +625,7 @@ function Index() {
                       <label htmlFor="lead-telefono" className="mb-1.5 block text-[11px] font-semibold tracking-widest uppercase text-muted-foreground">
                         {t.form.labelPhone} <span aria-hidden="true" className="text-red-400">*</span>
                       </label>
-                      <div className={`flex overflow-hidden rounded-lg border bg-[#0a1a2f] transition-colors ${fieldErrors.telefono ? "border-red-500/60" : "border-[#1a3050]"}`}>
+                      <div className={`flex rounded-lg border bg-[#0a1a2f] transition-colors ${fieldErrors.telefono ? "border-red-500/60" : "border-[#1a3050]"}`}>
                         <PrefixDropdown value={prefix} onChange={setPrefix} />
                         <input
                           id="lead-telefono"
@@ -637,7 +637,7 @@ function Index() {
                           onChange={handleChange}
                           aria-describedby={fieldErrors.telefono ? "err-telefono" : undefined}
                           aria-invalid={!!fieldErrors.telefono}
-                          className="flex-1 bg-transparent px-3 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none"
+                          className="flex-1 min-w-0 rounded-r-lg bg-transparent px-3 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none"
                         />
                       </div>
                       {fieldErrors.telefono && (
