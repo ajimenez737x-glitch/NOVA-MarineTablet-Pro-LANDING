@@ -54,7 +54,7 @@ export const translations = {
       },
       {
         title: "All-Day Battery",
-        detail: "15-16 h active navigation",
+        detail: "24 h active navigation",
         desc: "Lasts long voyages without recharging. 5× the battery life of a standard tablet.",
       },
       {
@@ -201,7 +201,7 @@ export const translations = {
         {
           icon: "🔋",
           feature: "Battery Life",
-          nova: "15-16 h active navigation",
+          nova: "24 h active navigation",
           standard: "8–10 h general use",
         },
         {
@@ -326,7 +326,7 @@ export const translations = {
       },
       {
         title: "Batería para Todo el Día",
-        detail: "15-16 h de navegación activa",
+        detail: "24 h de navegación activa",
         desc: "Aguanta largas travesías sin recargar. 5× más batería que una tableta estándar.",
       },
       {
@@ -473,7 +473,7 @@ export const translations = {
         {
           icon: "🔋",
           feature: "Autonomía de Batería",
-          nova: "15-16 h navegación activa",
+          nova: "24 h navegación activa",
           standard: "8–10 h uso general",
         },
         {

@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 15-16h battery. Pre-order the best nautical tablet and save 400€. Only first 100 units.",
+          "The ultimate marine navigation device: sub-metric GPS, 1,000 nit sunlight-readable display, IP68 waterproof, 24h battery. Pre-order the best nautical tablet and save 400€. Only first 100 units.",
       },
       { property: "og:type", content: "product" },
       { property: "og:url", content: "https://novamarintablets.tech/" },
@@ -134,7 +134,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Product",
               "name": "NOVA The Marine Tablet PRO",
-              "description": "Professional nautical tablet with sub-metric RTK GNSS GPS ±1.5 cm, 1,000 nit sunlight-readable display, IP68 waterproofing, MIL-STD-810H military certification and 15-16 hour battery life. The best marine navigation device for sea professionals.",
+              "description": "Professional nautical tablet with sub-metric RTK GNSS GPS ±1.5 cm, 1,000 nit sunlight-readable display, IP68 waterproofing, MIL-STD-810H military certification and 24-hour battery life. The best marine navigation device for sea professionals.",
               "brand": { "@type": "Brand", "name": "NOVA Marine" },
               "image": "https://novamarintablets.tech/og-image.jpg",
               "sku": "NOVA-PRO-001",
@@ -144,7 +144,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 { "@type": "PropertyValue", "name": "Screen Brightness", "value": "1,000 nits" },
                 { "@type": "PropertyValue", "name": "Waterproof Rating", "value": "IP68" },
                 { "@type": "PropertyValue", "name": "Military Standard", "value": "MIL-STD-810H" },
-                { "@type": "PropertyValue", "name": "Battery Life", "value": "15-16 hours active navigation" },
+                { "@type": "PropertyValue", "name": "Battery Life", "value": "24 hours active navigation" },
                 { "@type": "PropertyValue", "name": "Operating System", "value": "Android 14 Marine Edition" },
               ],
               "offers": {

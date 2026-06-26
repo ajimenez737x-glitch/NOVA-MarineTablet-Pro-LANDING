@@ -265,9 +265,9 @@ function Index() {
                     {t.hero.ctaBtn}
                   </a>
                   <a
-                    href="/brochure.pdf"
-                    download="NOVA-Marine-Tablet-PRO-Brochure.pdf"
-                    onClick={() => trackEvent("file_download", { file_name: "nova-brochure.pdf" })}
+                    href={lang === "es" ? "/brochure-es.pdf" : "/brochure-en.pdf"}
+                    download={lang === "es" ? "NOVA-Marine-Tablet-PRO-Dossier-ES.pdf" : "NOVA-Marine-Tablet-PRO-Brochure-EN.pdf"}
+                    onClick={() => trackEvent("file_download", { file_name: lang === "es" ? "nova-brochure-es.pdf" : "nova-brochure-en.pdf" })}
                     className="shrink-0 inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-4 text-sm font-medium text-white/90 transition-all duration-300 hover:border-white hover:bg-white/10 hover:text-white active:scale-[0.98]"
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
