@@ -110,7 +110,7 @@ export const translations = {
         {
           name: "Federico Rossi",
           role: "Sport Fisher · Italy",
-          text: "I can track fish and routes seamlessly. The screen stays perfectly readable even in bright Mediterranean sun, and the GPS accuracy is genuinely impressive for a tablet at this price.",
+          text: "Managing fishing zones and plotting return routes has never been this precise. The screen stays perfectly readable even in bright Mediterranean sun, and the GPS accuracy is genuinely impressive for a tablet at this price.",
         },
         {
           name: "Moñi de Roda",
@@ -290,7 +290,7 @@ export const translations = {
       rrp: "PVP 995€",
       units: "Solo 100 unidades",
       ctaBtn: "Reservar Ahora",
-      ctaNote: "Ahorra 400€ y llévate Supercargador + Asa Ergonómica GRATIS",
+      ctaNote: "Ahorra 400€ y llévate Supercargador + Asa Ergonómica GRATIS",
       badgePatent: "★ Patente Registrada",
       badgeDesign: "Diseño Español",
     },
@@ -382,7 +382,7 @@ export const translations = {
         {
           name: "Federico Rossi",
           role: "Pescador Deportivo · Italia",
-          text: "Puedo rastrear peces y rutas sin complicaciones. La pantalla se ve perfectamente incluso con el sol del Mediterráneo, y la precisión GPS es realmente impresionante para una tableta a este precio.",
+          text: "Gestionar zonas de pesca y trazar rutas de regreso nunca había sido tan preciso. La pantalla se ve perfectamente incluso con el sol del Mediterráneo, y la precisión GPS es realmente impresionante para una tableta a este precio.",
         },
         {
           name: "Moñi de Roda",

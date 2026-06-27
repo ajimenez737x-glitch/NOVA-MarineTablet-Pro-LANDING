@@ -344,7 +344,7 @@ function Index() {
                     {lang === "es" ? "Descargar Dossier" : "Download Brochure"}
                   </a>
                 </div>
-                <p className="text-sm leading-snug text-white/70 max-w-xs">
+                <p className="text-sm leading-snug text-white/70 max-w-sm text-pretty">
                   {t.hero.ctaNote}
                 </p>
               </div>
@@ -489,20 +489,42 @@ function Index() {
           </Reveal>
         </div>
 
-        <div ref={marqueeContainerRef} className="relative mt-16 md:mt-20 overflow-hidden">
-          <div className="flex w-max animate-marquee gap-6 pl-6 md:gap-8 md:pl-10">
+        {/* Desktop: auto-scrolling marquee */}
+        <div ref={marqueeContainerRef} className="hidden md:block relative mt-20 overflow-hidden">
+          <div className="flex w-max animate-marquee gap-8 pl-10">
             {[...t.testimonials.items, ...t.testimonials.items, ...t.testimonials.items, ...t.testimonials.items].map((testimonial, i) => (
               <figure
                 key={i}
-                className="w-[85vw] max-w-xl shrink-0 border border-border bg-background p-5 md:w-[480px] md:p-10 rounded-lg shadow-2xl"
+                className="w-[480px] shrink-0 border border-border bg-background p-10 rounded-lg shadow-2xl"
               >
-                <div
-                  className="font-display text-6xl leading-none text-primary"
-                  aria-hidden
-                >
+                <div className="font-display text-6xl leading-none text-primary" aria-hidden>
                   &ldquo;
                 </div>
-                <blockquote className="-mt-3 text-base md:text-lg font-medium leading-relaxed text-foreground">
+                <blockquote className="-mt-3 text-lg font-medium leading-relaxed text-foreground">
+                  {testimonial.text}
+                </blockquote>
+                <figcaption className="mt-8 flex flex-col justify-start border-t border-border pt-5 gap-1">
+                  <span className="text-sm font-semibold text-primary">{testimonial.name}</span>
+                  <span className="text-xs text-muted-foreground">{testimonial.role}</span>
+                  <span className="text-xs tracking-widest mt-1 text-primary">★ ★ ★ ★ ★</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: draggable snap carousel */}
+        <div className="md:hidden mt-16 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-4">
+          <div className="flex gap-6 pl-6 pr-6 w-max">
+            {t.testimonials.items.map((testimonial, i) => (
+              <figure
+                key={i}
+                className="w-[85vw] shrink-0 border border-border bg-background p-5 rounded-lg shadow-2xl snap-start"
+              >
+                <div className="font-display text-6xl leading-none text-primary" aria-hidden>
+                  &ldquo;
+                </div>
+                <blockquote className="-mt-3 text-base font-medium leading-relaxed text-foreground">
                   {testimonial.text}
                 </blockquote>
                 <figcaption className="mt-8 flex flex-col justify-start border-t border-border pt-5 gap-1">

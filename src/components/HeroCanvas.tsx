@@ -92,7 +92,7 @@ export function HeroCanvas({ onProgress, children }: HeroCanvasProps) {
     };
 
     loadRemaining();
-    return () => { images.length = 0; };
+    return () => {};
   }, [drawFrame, resizeCanvas]);
 
   // Native scroll listener — works reliably with CSS sticky (no GSAP pin needed)
